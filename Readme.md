@@ -41,4 +41,4 @@ Hence, I would propose a structure like this:
 As you can see, closing times on the next day would be represented by a value greater than 24 hours (90000 seconds
 should be 25 hours). Since Monday to Sunday are required, they have a separate field in the TO. Additional days would be
 added under the field `additional-days`, which would be interpreted as a map mapping the day's name to its opening
-hours.
+hours. The `additional-days` field is optional and can also be left empty.
