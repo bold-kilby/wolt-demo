@@ -1,15 +1,15 @@
 # WoltApplication
 
-This is a standard spring boot application. No special configuration is needed to run it. By default, it will listen to
-requests on `localhost:8080`.
+This is a standard spring boot application. No special configuration is needed to run it. It can also be checked out on
+[Git](https://github.com/bold-kilby/wolt-demo.git).
 
 To help you play with the application, a postman collection is provided under `resources/postman`. It only contains one
-request, but you can change that one as you see fit :)
+request, but you can change that one as you see fit :) 
 
 ## Part 2 of the assignment
 
-I don't think the JSON structure is optimal, especially sometimes putting closing times on the next day. I would instead
-choose something closer to my model object in `OpeningHours.kt` (obviously :) ).
+I don't think the JSON structure is optimal, especially closing times always being on the day on which they occur. I
+would instead choose something closer to my model object in `OpeningHours.kt` (obviously :) ).
 
 The reasons for this are as follows:
 
@@ -38,7 +38,7 @@ Hence, I would propose a structure like this:
 }
 ```
 
-As you can see, closing times on the next day would be represented by a value greater
-than 24 hours (90000 seconds should be 25 hours). Since Monday to Sunday are required, 
-they have a separate field in the TO. Additional days would be added under the field `additional-days`, 
-which would be interpreted as a map mapping the day's name to its opening hours.
+As you can see, closing times on the next day would be represented by a value greater than 24 hours (90000 seconds
+should be 25 hours). Since Monday to Sunday are required, they have a separate field in the TO. Additional days would be
+added under the field `additional-days`, which would be interpreted as a map mapping the day's name to its opening
+hours.
