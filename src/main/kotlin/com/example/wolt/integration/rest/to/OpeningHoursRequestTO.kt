@@ -49,6 +49,7 @@ data class OpeningHoursTimePointRequestTO(
 enum class OpeningHourTypeRequestTO {
     @JsonProperty("open")
     OPEN,
+
     @JsonProperty("close")
     CLOSE;
 

@@ -15,14 +15,14 @@ class OpeningHoursWriter(private val timeWriter: TimeWriter) {
     private fun write(openingHour: OpeningHour): String =
         "${openingHour.dayName}: ${write(openingHour.openingIntervals)}"
 
-    private fun write(openingHourIntervals: List<OpeningInterval>): String {
-        if(openingHourIntervals.isEmpty()) {
-            return CLOSED_EXPRESSION
+    private fun write(openingHourIntervals: List<OpeningInterval>): String =
+        if (openingHourIntervals.isEmpty()) {
+            CLOSED_EXPRESSION
+        } else {
+            openingHourIntervals.joinToString { writeOpeningInterval(it) }
         }
-        return openingHourIntervals.joinToString { writeOpeningInterval(it) }
-    }
 
-    private fun writeOpeningInterval(openingInterval: OpeningInterval) =
+    private fun writeOpeningInterval(openingInterval: OpeningInterval): String =
         "${timeWriter.write(openingInterval.open)} - ${timeWriter.write(openingInterval.close)}"
 
     companion object {

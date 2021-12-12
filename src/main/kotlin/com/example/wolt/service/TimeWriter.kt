@@ -21,7 +21,7 @@ class TimeWriter {
     private fun Long.trimSecondsFromTime(): Long =
         this - mod(60)
 
-    private fun Long.representFullHour() = mod(3600) == 0
+    private fun Long.representFullHour(): Boolean = mod(3600) == 0
 
     companion object {
         private val AM_PM_FORMATTER_WITH_MINUTES = SimpleDateFormat("h:mm a")

@@ -6,10 +6,8 @@ import com.example.wolt.service.mapper.to.OpeningHoursTimePointMappingTO
 import org.springframework.stereotype.Service
 
 @Service
-class TimesSizeValidator : OpeningHoursValidator{
-    override fun validate(
-        openingHoursTO: OpeningHoursMappingTO
-    ): ValidationReport {
+class TimesSizeValidator : OpeningHoursValidator {
+    override fun validate(openingHoursTO: OpeningHoursMappingTO): ValidationReport {
         val errors = mutableListOf<String>()
         openingHoursTO.forEach { day ->
             checkTimesHaveCorrectSize(

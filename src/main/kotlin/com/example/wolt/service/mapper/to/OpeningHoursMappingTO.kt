@@ -5,7 +5,7 @@ data class OpeningHoursMappingTO(
 ) : Iterable<MappingDayOfWeek> {
     override fun iterator() = allDays.iterator()
 
-    val allDays
+    val allDays: Set<MappingDayOfWeek>
         get() = openingHours.keys
 
     fun getOpeningHoursForDay(day: MappingDayOfWeek): List<OpeningHoursTimePointMappingTO> =
@@ -25,7 +25,7 @@ enum class MappingDayOfWeek(val dayName: String) {
     SATURDAY("Saturday"),
     SUNDAY("Sunday");
 
-    fun followingDay() = when (this) {
+    fun followingDay(): MappingDayOfWeek = when (this) {
         MONDAY -> TUESDAY
         TUESDAY -> WEDNESDAY
         WEDNESDAY -> THURSDAY

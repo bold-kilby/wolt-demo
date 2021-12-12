@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class AllWeekdaysValidator : OpeningHoursValidator{
-    override fun validate(
-        openingHoursTO: OpeningHoursMappingTO
-    ): ValidationReport {
+    override fun validate(openingHoursTO: OpeningHoursMappingTO): ValidationReport {
         val errors = mutableListOf<String>()
         val missingWeekdays = openingHoursTO.missingWeekdays()
         if (missingWeekdays.isNotEmpty()) {
@@ -18,6 +16,6 @@ class AllWeekdaysValidator : OpeningHoursValidator{
         return ValidationReport(errors)
     }
 
-    private fun OpeningHoursMappingTO.missingWeekdays() =
+    private fun OpeningHoursMappingTO.missingWeekdays(): Set<MappingDayOfWeek> =
         MappingDayOfWeek.values().toSet().minus(allDays)
 }
