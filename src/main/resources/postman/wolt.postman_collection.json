@@ -8,7 +8,7 @@
 		{
 			"name": "print opening hours",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
 					"raw": ""
