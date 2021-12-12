@@ -21,8 +21,6 @@ class OpeningHoursControllerIT {
     @Autowired
     private lateinit var restTemplate: TestRestTemplate
 
-    private val s = "http://localhost:$port/opening-hours"
-
     @Test
     fun `A valid request to print opening hours should be answered with the correct string`() {
         val payload: OpeningHoursRequestTO = OpeningHoursRequestTOFactory.completeRequestTO

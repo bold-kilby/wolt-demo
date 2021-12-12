@@ -16,7 +16,7 @@ data class OpeningHoursMappingTO(
 }
 
 
-enum class MappingDayOfWeek() {
+enum class MappingDayOfWeek {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
 
     fun followingDay(): MappingDayOfWeek = when (this) {
