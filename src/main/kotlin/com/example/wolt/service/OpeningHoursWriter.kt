@@ -13,7 +13,7 @@ class OpeningHoursWriter(private val timeWriter: TimeWriter) {
             .writeOnSeparateLines()
 
     private fun write(openingHour: OpeningHour): String =
-        "${openingHour.dayName}: ${write(openingHour.openingIntervals)}"
+        "${openingHour.day.dayName}: ${write(openingHour.openingIntervals)}"
 
     private fun write(openingHourIntervals: List<OpeningInterval>): String =
         if (openingHourIntervals.isEmpty()) {

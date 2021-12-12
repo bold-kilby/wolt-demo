@@ -11,7 +11,7 @@ class AllWeekdaysValidator : OpeningHoursValidator{
         val errors = mutableListOf<String>()
         val missingWeekdays = openingHoursTO.missingWeekdays()
         if (missingWeekdays.isNotEmpty()) {
-            errors.add("Some weekdays are missing: ${missingWeekdays.joinToString { it.dayName }}")
+            errors.add("Some weekdays are missing: ${missingWeekdays.joinToString()}")
         }
         return ValidationReport(errors)
     }

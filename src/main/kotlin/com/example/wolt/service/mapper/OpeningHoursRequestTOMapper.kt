@@ -1,9 +1,18 @@
 package com.example.wolt.service.mapper
 
 import com.example.wolt.business.model.OpeningHour
+import com.example.wolt.business.model.OpeningHourDay
 import com.example.wolt.business.model.OpeningHours
 import com.example.wolt.business.model.OpeningInterval
 import com.example.wolt.integration.rest.to.OpeningHoursRequestTO
+import com.example.wolt.service.mapper.to.MappingDayOfWeek
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.FRIDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.MONDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.SATURDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.SUNDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.THURSDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.TUESDAY
+import com.example.wolt.service.mapper.to.MappingDayOfWeek.WEDNESDAY
 import com.example.wolt.service.mapper.to.OpeningHourTypeMappingTO.CLOSE
 import com.example.wolt.service.mapper.to.OpeningHoursMappingTO
 import com.example.wolt.service.mapper.to.OpeningHoursTimePointMappingTO
@@ -47,7 +56,18 @@ class OpeningHoursRequestTOMapper(private val openingHoursValidityChecker: Openi
     }
 
     private fun OpeningHoursMappingTO.extractOpeningHours(): OpeningHours =
-        OpeningHours(this.map { OpeningHour(it.dayName, this.getOpeningHoursForDay(it).toOpeningIntervals()) })
+        OpeningHours(this.map { OpeningHour(it.toOpeningHourDay(), this.getOpeningHoursForDay(it).toOpeningIntervals()) })
+
+    private fun MappingDayOfWeek.toOpeningHourDay(): OpeningHourDay =
+        when(this) {
+            MONDAY -> OpeningHourDay.MONDAY
+            TUESDAY -> OpeningHourDay.TUESDAY
+            WEDNESDAY -> OpeningHourDay.WEDNESDAY
+            THURSDAY -> OpeningHourDay.THURSDAY
+            FRIDAY -> OpeningHourDay.FRIDAY
+            SATURDAY -> OpeningHourDay.SATURDAY
+            SUNDAY -> OpeningHourDay.SUNDAY
+        }
 
     private fun List<OpeningHoursTimePointMappingTO>.toOpeningIntervals(): List<OpeningInterval> =
         chunked(2).map { toOpeningHour(it[0], it[1]) }
@@ -57,6 +77,5 @@ class OpeningHoursRequestTOMapper(private val openingHoursValidityChecker: Openi
         closeOpeningHoursTimePointTO: OpeningHoursTimePointMappingTO
     ): OpeningInterval =
         OpeningInterval(openOpeningHoursTimePointTO.value, closeOpeningHoursTimePointTO.value)
-
 }
 

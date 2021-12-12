@@ -16,14 +16,8 @@ data class OpeningHoursMappingTO(
 }
 
 
-enum class MappingDayOfWeek(val dayName: String) {
-    MONDAY("Monday"),
-    TUESDAY("Tuesday"),
-    WEDNESDAY("Wednesday"),
-    THURSDAY("Thursday"),
-    FRIDAY("Friday"),
-    SATURDAY("Saturday"),
-    SUNDAY("Sunday");
+enum class MappingDayOfWeek() {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
 
     fun followingDay(): MappingDayOfWeek = when (this) {
         MONDAY -> TUESDAY

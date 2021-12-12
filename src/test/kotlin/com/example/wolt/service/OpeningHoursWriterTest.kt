@@ -1,6 +1,8 @@
 package com.example.wolt.service
 
 import com.example.wolt.business.model.OpeningHour
+import com.example.wolt.business.model.OpeningHourDay.MONDAY
+import com.example.wolt.business.model.OpeningHourDay.TUESDAY
 import com.example.wolt.business.model.OpeningHours
 import com.example.wolt.business.model.OpeningInterval
 import io.mockk.every
@@ -21,7 +23,7 @@ class OpeningHoursWriterTest {
         val close: Long = 1
         val openingHours = OpeningHours(
             listOf(
-                OpeningHour("Monday", listOf(OpeningInterval(open, close)))
+                OpeningHour(MONDAY, listOf(OpeningInterval(open, close)))
             )
         )
         every { timeWriter.write(any()) } returns ""
@@ -38,8 +40,8 @@ class OpeningHoursWriterTest {
         val close: Long = 3600
         val openingHours = OpeningHours(
             listOf(
-                OpeningHour("Monday", listOf(OpeningInterval(open, close))),
-                OpeningHour("Tuesday", listOf())
+                OpeningHour(MONDAY, listOf(OpeningInterval(open, close))),
+                OpeningHour(TUESDAY, listOf())
             )
         )
         every { timeWriter.write(0) } returns "0:00 AM"
