@@ -1,4 +1,3 @@
 package com.example.wolt.util
 
-fun List<String>.writeOnSeparateLines(): String =
-    joinToString("\n")
+fun List<String>.writeOnSeparateLines(): String = joinToString("\n")

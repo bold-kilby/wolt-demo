@@ -1,8 +1,6 @@
 package com.example.wolt.business.model
 
-data class OpeningHours(
-    val openingHours: List<OpeningHour>
-) : Iterable<OpeningHour> {
+data class OpeningHours(val openingHours: List<OpeningHour>) : Iterable<OpeningHour> {
     override fun iterator() = openingHours.iterator()
 }
 
@@ -18,7 +16,7 @@ enum class OpeningHourDay(val dayName: String) {
     THURSDAY("Thursday"),
     FRIDAY("Friday"),
     SATURDAY("Saturday"),
-    SUNDAY("Sunday");
+    SUNDAY("Sunday")
 }
 
 data class OpeningInterval(

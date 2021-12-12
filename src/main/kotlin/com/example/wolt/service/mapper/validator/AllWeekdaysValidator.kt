@@ -6,7 +6,7 @@ import com.example.wolt.service.mapper.to.OpeningHoursMappingTO
 import org.springframework.stereotype.Service
 
 @Service
-class AllWeekdaysValidator : OpeningHoursValidator{
+class AllWeekdaysValidator : OpeningHoursValidator {
     override fun validate(openingHoursTO: OpeningHoursMappingTO): ValidationReport {
         val errors = mutableListOf<String>()
         val missingWeekdays = openingHoursTO.missingWeekdays()

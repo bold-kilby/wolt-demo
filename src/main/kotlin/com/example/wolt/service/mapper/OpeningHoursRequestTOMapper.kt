@@ -56,10 +56,15 @@ class OpeningHoursRequestTOMapper(private val openingHoursValidityChecker: Openi
     }
 
     private fun OpeningHoursMappingTO.extractOpeningHours(): OpeningHours =
-        OpeningHours(this.map { OpeningHour(it.toOpeningHourDay(), this.getOpeningHoursForDay(it).toOpeningIntervals()) })
+        OpeningHours(this.map {
+            OpeningHour(
+                it.toOpeningHourDay(),
+                this.getOpeningHoursForDay(it).toOpeningIntervals()
+            )
+        })
 
     private fun MappingDayOfWeek.toOpeningHourDay(): OpeningHourDay =
-        when(this) {
+        when (this) {
             MONDAY -> OpeningHourDay.MONDAY
             TUESDAY -> OpeningHourDay.TUESDAY
             WEDNESDAY -> OpeningHourDay.WEDNESDAY

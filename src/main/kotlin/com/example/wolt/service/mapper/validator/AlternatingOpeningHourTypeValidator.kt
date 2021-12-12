@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class AlternatingOpeningHourTypeValidator : OpeningHoursValidator {
-    override fun validate(
-        openingHoursTO: OpeningHoursMappingTO
-    ): ValidationReport {
+    override fun validate(openingHoursTO: OpeningHoursMappingTO): ValidationReport {
         val errors = mutableListOf<String>()
         openingHoursTO.forEach { day ->
             checkTypesAlternate(

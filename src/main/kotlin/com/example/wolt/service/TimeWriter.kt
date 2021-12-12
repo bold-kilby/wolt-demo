@@ -9,7 +9,7 @@ import java.util.*
 class TimeWriter {
 
     fun write(seconds: Long): String {
-        val secondsTrimmed = seconds.trimSecondsFromTime()
+        val secondsTrimmed = seconds.trimSeconds()
         val date = Date.from(Instant.ofEpochSecond(secondsTrimmed))
         return if (secondsTrimmed.representFullHour()) {
             AM_PM_FORMATTER_WITHOUT_MINUTES.format(date)
@@ -18,17 +18,20 @@ class TimeWriter {
         }
     }
 
-    private fun Long.trimSecondsFromTime(): Long =
-        this - mod(60)
+    private fun Long.trimSeconds(): Long = this - mod(SECONDS_IN_ONE_MINUTE)
 
-    private fun Long.representFullHour(): Boolean = mod(3600) == 0
+    private fun Long.representFullHour(): Boolean = mod(SECONDS_IN_ONE_HOUR) == 0
 
     companion object {
         private val AM_PM_FORMATTER_WITH_MINUTES = SimpleDateFormat("h:mm a")
         private val AM_PM_FORMATTER_WITHOUT_MINUTES = SimpleDateFormat("h a")
+
         init {
             AM_PM_FORMATTER_WITH_MINUTES.timeZone = TimeZone.getTimeZone("GMT")
             AM_PM_FORMATTER_WITHOUT_MINUTES.timeZone = TimeZone.getTimeZone("GMT")
         }
+
+        private const val SECONDS_IN_ONE_HOUR = 3600
+        private const val SECONDS_IN_ONE_MINUTE = 60
     }
 }
