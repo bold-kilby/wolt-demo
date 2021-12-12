@@ -24,9 +24,11 @@ class OpeningHoursControllerIT {
     @Test
     fun `A valid request to print opening hours should be answered with the correct string`() {
         val payload: OpeningHoursRequestTO = OpeningHoursRequestTOFactory.completeRequestTO
-        val response = restTemplate.postForObject("http://localhost:$port/opening-hours",
+        val response = restTemplate.postForObject(
+            "http://localhost:$port/opening-hours",
             payload,
-            String::class.java)
+            String::class.java
+        )
         Assertions.assertEquals(
             """
                 Monday: Closed
@@ -44,9 +46,11 @@ class OpeningHoursControllerIT {
     @Test
     fun `An invalid request should result in a bad request response`() {
         val payload: OpeningHoursRequestTO = OpeningHoursRequestTOFactory.invalidRequestTO
-        val response = restTemplate.postForEntity("http://localhost:$port/opening-hours",
+        val response = restTemplate.postForEntity(
+            "http://localhost:$port/opening-hours",
             payload,
-            String::class.java)
+            String::class.java
+        )
 
         Assertions.assertEquals(response.statusCode, HttpStatus.BAD_REQUEST)
     }
