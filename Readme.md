@@ -1,10 +1,10 @@
 # WoltApplication
 
-This is a standard Spring Boot application. No special configuration is needed to run it. It can also be checked out on
-[Git](https://github.com/bold-kilby/wolt-demo.git).
+This is a standard Spring Boot application using Gradle as a build tool. No special configuration is needed to run it.
+It can be checked out on [Git](https://github.com/bold-kilby/wolt-demo.git).
 
 To help you play with the application, a postman collection is provided under `resources/postman`. It only contains one
-request, but you can change that one as you see fit :) 
+request, but you can change that one as you see fit :)
 
 ## Part 2 of the assignment
 

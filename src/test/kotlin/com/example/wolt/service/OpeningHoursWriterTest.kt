@@ -44,13 +44,13 @@ class OpeningHoursWriterTest {
                 OpeningHour(TUESDAY, listOf())
             )
         )
-        every { timeWriter.write(0) } returns "0:00 AM"
-        every { timeWriter.write(3600) } returns "1:00 AM"
+        every { timeWriter.write(0) } returns "12 AM"
+        every { timeWriter.write(3600) } returns "1 AM"
 
         val writtenOpeningHours = openingHoursWriter.write(openingHours)
 
         val expectedWrittenOpeningHours = """
-            Monday: 0:00 AM - 1:00 AM
+            Monday: 12 AM - 1 AM
             Tuesday: Closed
         """.trimIndent()
         Assertions.assertEquals(expectedWrittenOpeningHours, writtenOpeningHours)
